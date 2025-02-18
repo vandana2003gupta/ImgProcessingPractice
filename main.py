@@ -1,11 +1,11 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("./images/fruits.png")
-
-print(img.shape)
-print(type(img))
-print(img)
+# img = cv2.imread("./images/fruits.png")
+#
+# print(img.shape)
+# print(type(img))
+# print(img)
 
 ## Gray Scale Image ##
 # img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -32,10 +32,22 @@ print(img)
 #img_flip = cv2.flip(img, -1)
 #cv2.imshow("window",img_flip)
 
-
+##Crop Image ##
 #img_crop = new_img[100:800, 100:800]
 #img_crop = img[100:200, 100:200]
 # cv2.imshow("img_crop", img_crop)
+
+#img_write = cv2.imwrite("OrangeColoured.png", img)
+
+## Shapes ##
+img= np.zeros((512,512,3))
+cv2.rectangle(img, pt1= (100,100), pt2= (300,300), color=(255,0,0), thickness=-1)
+cv2.rectangle(img, pt1= (100,100), pt2= (300,300), color=(0,255,0), thickness=3)
+cv2.circle(img, center= (100,400), radius=50, color=(0, 255,0), thickness=3)
+cv2.circle(img, center= (100,400), radius=50, color=(0, 0,255), thickness=-1)
+cv2.line(img,pt1=(0,0), pt2=(512,512), color=(0,255,0),thickness=3)
+cv2.putText(img, text=" Hey Utk!", org=(310,310),fontScale=2,fontFace= cv2.FONT_HERSHEY_PLAIN,color=(0,0,255),thickness=3 )
+
 
 cv2.imshow("window", img)
 cv2.waitKey(0)
