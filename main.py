@@ -40,15 +40,35 @@ import numpy as np
 #img_write = cv2.imwrite("OrangeColoured.png", img)
 
 ## Shapes ##
-img= np.zeros((512,512,3))
-cv2.rectangle(img, pt1= (100,100), pt2= (300,300), color=(255,0,0), thickness=-1)
-cv2.rectangle(img, pt1= (100,100), pt2= (300,300), color=(0,255,0), thickness=3)
-cv2.circle(img, center= (100,400), radius=50, color=(0, 255,0), thickness=3)
-cv2.circle(img, center= (100,400), radius=50, color=(0, 0,255), thickness=-1)
-cv2.line(img,pt1=(0,0), pt2=(512,512), color=(0,255,0),thickness=3)
-cv2.putText(img, text=" Hey Utk!", org=(310,310),fontScale=2,fontFace= cv2.FONT_HERSHEY_PLAIN,color=(0,0,255),thickness=3 )
+# img= np.zeros((512,512,3))
+# cv2.rectangle(img, pt1= (100,100), pt2= (300,300), color=(255,0,0), thickness=-1)
+# cv2.rectangle(img, pt1= (100,100), pt2= (300,300), color=(0,255,0), thickness=3)
+# cv2.circle(img, center= (100,400), radius=50, color=(0, 255,0), thickness=3)
+# cv2.circle(img, center= (100,400), radius=50, color=(0, 0,255), thickness=-1)
+# cv2.line(img,pt1=(0,0), pt2=(512,512), color=(0,255,0),thickness=3)
+# cv2.putText(img, text=" Hey Utk!", org=(310,310),fontScale=2,fontFace= cv2.FONT_HERSHEY_PLAIN,color=(0,0,255),thickness=3 )
 
 
-cv2.imshow("window", img)
-cv2.waitKey(0)
+def draw(event, x,y, flags, param):
+    # print("Event Triggered")
+    # print(event)
+    if event ==0:
+        print("Mouse Moved")
+    if event==1:
+        print("Mouse Right Clicked")
+cv2.namedWindow(winname='window')
+cv2.setMouseCallback("window", draw)
+
+img = np.zeros((512,512,3))
+
+while True:
+    cv2.imshow("window",img)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+cv2.destroyAllWindows()
+
+
+
+# cv2.imshow("window", img)
+# cv2.waitKey(0)
 
