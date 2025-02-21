@@ -88,37 +88,45 @@ import numpy as np
 # cv2.destroyAllWindows()
 
 ##New Crop Image Code
-img= cv2.imread("./images/aeroplane.png")
+# img= cv2.imread("./images/aeroplane.png")
+#
+# flag = False
+# ix= -1
+# iy = -1
+# def crop(event, x, y, flags, params):
+#
+#     global ix, iy, flag
+#     if event == 1:
+#         flag = True
+#         ix = x
+#         iy = y
+#     elif event == 4:
+#         flag = False
+#         cv2.rectangle(img, pt1= (ix, iy), pt2=(x,y), color=(0, 255, 0), thickness= 2)
+#         fx=x
+#         fy=y
+#         cropped = img[iy:fy, ix:fx]
+#         cv2.imshow("window", cropped)
+#         # cv2.imshow("cropped", cropped) overlap triangle and cropped img
+#         cv2.waitKey(0)
+#
+# cv2.namedWindow(winname='window')
+# cv2.setMouseCallback("window", crop)
+# while True:
+#     cv2.imshow('window',img)
+#
+#     if cv2.waitKey(1) & 0xFF == ord('x'):
+#         break
 
-flag = False
-ix= -1
-iy = -1
-def crop(event, x, y, flags, params):
+cap = cv2.VideoCapture(0)
 
-    global ix, iy, flag
-    if event == 1:
-        flag = True
-        ix = x
-        iy = y
-    elif event == 4:
-        flag = False
-        cv2.rectangle(img, pt1= (ix, iy), pt2=(x,y), color=(0, 255, 0), thickness= 2)
-        fx=x
-        fy=y
-        cropped = img[iy:fy, ix:fx]
-        cv2.imshow("window", cropped)
-        # cv2.imshow("cropped", cropped) overlap triangle and cropped img
-        cv2.waitKey(0)
-
-cv2.namedWindow(winname='window')
-cv2.setMouseCallback("window", crop)
 while True:
-    cv2.imshow('window',img)
+    ret, frame = cap.read()
+    cv2.imshow('frame', frame)
 
-    if cv2.waitKey(1) & 0xFF == ord('x'):
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
-
-
+cv2.destroyAllWindows()
 
 
 
